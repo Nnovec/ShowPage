@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>登入</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="JavaScript/vue_dev.js"></script>
+</head>
+<body>
+
+    <form class="logo_box" id="logo_box" action="table.html" method="GET">
+        <h1><span class="logo"></span>TechExcel ServiceWise</h1>
+
+        <p class="warning" id="warning" v-show='text_is_show'>提示语句</p>
+        <p class="warning" id="warning" v-show='password_is_show'>提示语句</p>
+
+        <input type="text" id="text" placeholder="Username" @onblur='text_warning'>
+        <input type="password" id="password" placeholder="Password">
+        
+        <button type="submit">Login</button>
+        <a class="tiao_kuan" href="#">服务条款</a>
+    </form>
+
+    <script>
+        var logo_box = new Vue({
+            el: '#logo_box',
+            data: {
+                text_is_show: false,
+                password_is_show: false
+            },
+            methods: {
+                text_warning: function(){
+                }
+            }
+
+        })
+    </script>
+
+    <script>
+        var warning = document.querySelector('.logo_box .warning');
+        var input_text = document.querySelector('input[type="text"]');
+        var input_password = document.querySelector('input[type="password"]');
+        input_text.onblur = function(){
+            if(this.value.length<1){
+                warning.innerHTML = '提示：账号不能为空';
+                warning.style.color = 'rgba(255, 0, 0, 1)';
+            }
+            else
+            {
+                warning.style.color = 'rgba(0, 0, 0, 0)';
+            }
+        }
+        input_password.onblur = function(){
+            if(this.value.length<1){
+                warning.innerHTML = '提示：密码不能为空';
+                warning.style.color = 'rgba(255, 0, 0, 1)';
+            }
+            else if(this.value.length<6 || this.value.length>18){
+                warning.innerHTML = '提示：请输入6~18位的密码';
+                warning.style.color = 'rgba(255, 0, 0, 1)';
+            }
+            else if(input_text.value.length<1){
+                warning.innerHTML = '提示：账号不能为空';
+                warning.style.color = 'rgba(255, 0, 0, 1)';
+            }
+            else
+            {
+                warning.style.color = 'rgba(0, 0, 0, 0)';
+            }
+        }
+    </script>
+
+</body>
+</html>

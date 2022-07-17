@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件列表</title>
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="JavaScript/vue_dev.js"></script>
+</head>
+<body>
+    <div class="search_box">
+        <!-- <p>搜索:</p> -->
+        <input type="text" v-model="searchText">
+        <button class="search_button"><img src="images/search1.png" alt=""></button>
+    </div>
+
+    <div class="main" id="event">
+        <a href="#" v-for='data, number in eventList'>
+            <h3>{{eventList[number].title}}</h3>
+            <p class="time">{{eventList[number].time}}</p>
+            <span class="owner"><img src="images/people1.png" alt=""> {{eventList[number].owner}}</span>
+            <span class="status">{{eventList[number].status}}</span>
+        </a>
+    </div>
+    <script>
+        let event = new Vue({
+            el: '#event',
+            data:{
+                list_number: [0,1,2,3,4,5],
+                searchText: "",
+                eventList: [
+                    {title: '#1 '+'维修发电机',time: '1月3日 15：32',owner: '小明',status: '已完成'},
+                    {title: '#2 '+'维修发电机',time: '1月3日 15：32',owner: '小明',status: '已完成'},
+                    {title: '#3 '+'维修发电机',time: '1月3日 15：32',owner: '小明',status: '已完成'},
+                    {title: '#4 '+'维修发电机',time: '1月3日 15：32',owner: '小明',status: '已完成'},
+                    {title: '#5 '+'维修发电机',time: '1月3日 15：32',owner: '小明',status: '已完成'},
+                    {title: '#6 '+'维修发电机',time: '1月3日 15：32',owner: '小明',status: '已完成'}
+                ]
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+    
+</body>
+</html>
